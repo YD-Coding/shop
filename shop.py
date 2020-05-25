@@ -9,8 +9,8 @@ pygame.init()
 shop_run = False
 
 main_menu = menu(1280, 720, "MAIN MENU", r"images\menu_background.png")
-
 main_menu.mainloop()
+
 
 def shop_win_func():
     global shop_run
@@ -19,7 +19,7 @@ def shop_win_func():
     shop_image = pygame.image.load(r"images\shop.png")
     shop_win = pygame.display.set_mode((1280, 720))
     main_atm = atm(r"images\ATM.png", -15, 335)
-    man = Player(450, 400, shop_win)
+    man = Player(450, 650, shop_win)
     #shop_win.blit(man.char, (man.x, man.y))
     while shop_run:
         keys = pygame.key.get_pressed()
@@ -32,7 +32,7 @@ def shop_win_func():
             man.left = True
             man.right = False
             man.standing = False
-        elif keys[pygame.K_RIGHT] and man.x < 656:
+        elif keys[pygame.K_RIGHT] and man.x < 1050:
             man.x += man.vel
             man.right = True
             man.left = False
@@ -40,6 +40,9 @@ def shop_win_func():
         else:
             man.standing = True
             man.walkCount = 0
+
+            #if event.type = pygame.MOUSEBUTTONDOWN:
+                
 
         
         shop_win.blit(shop_image, (0,0))

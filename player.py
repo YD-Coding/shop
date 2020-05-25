@@ -17,17 +17,22 @@ class Player():
         self.win = win
     
     def draw(self):
-        if self.walkCount + 1 >= 27:
-            if not self.standing:
-                if self.left:
+        if not self.standing:
+            if self.left:
+                if self.walkCount + 1 >= 27:
+                    self.walkCount = 0
+                else:
                     self.walkCount += 1
-                elif self.right:
-                    win.blit(self.walkRight[self.walkCount//3], (self.x,self.y))
-                    self.walkCount +=1
-            if self.right:
-                self.win.blit(self.walkRight[0], (self.x, self.y))
-            else:
-                self.win.blit(self.walkLeft[0], (self.x, self.y))
+                    self.win.blit(self.walkLeft[self.walkCount//3], (self.x,self.y))
+            elif self.right:
+                if self.walkCount + 1 >= 27:
+                    self.walkCount = 0
+                else:
+                    self.walkCount += 1
+                    self.win.blit(self.walkRight[self.walkCount//3], (self.x,self.y))
+        else:
+            self.win.blit(self.char, (self.x, self.y))
+            
 
     def firstDraw(self):
         return
