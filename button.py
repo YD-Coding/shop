@@ -1,5 +1,6 @@
 import pygame
 pygame.init()
+
 class Button():
     def __init__(self, color, x, y, width, height, text, size):
         self.color = color
